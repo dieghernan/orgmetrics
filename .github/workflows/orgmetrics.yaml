@@ -8,16 +8,12 @@ on:
 name: Orgmetrics dashboard
 
 jobs:
-
   quarto-build-deploy:
-
     runs-on: ubuntu-latest
-
     permissions:
       contents: write
 
     steps:
-
     - name: Check out repository
       uses: actions/checkout@v6
 
@@ -43,7 +39,7 @@ jobs:
     - name: Orgmetrics deploy
       run: Rscript -e "options('rlang_message_verbosity'='verbose');
         orgmetrics::orgmetrics_deploy_r_univ(url='https://github.com/${{
-        github.repository }}', aggregation_period = 365L)"
+        github.repository }}', aggregation_period = 365L, title = 'dieghernan')"
       env:
         R_CRAN_WEB: "https://cloud.r-project.org"
         GITHUB_TOKEN: ${{ github.token }}
